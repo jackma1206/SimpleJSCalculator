@@ -1,0 +1,67 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #2f3542;
+}
+.calculator {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 450px;
+  background: #dfe4ea;
+  border-radius: 10px;
+  font-family: "Lexend Deca";
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.screen {
+  width: 90%;
+  min-height: 100px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+
+.numpad {
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.key {
+  width: 24.5%;
+  text-align: center;
+
+  padding: 20px;
+  margin-top: 2px;
+  transition: all 0.2s ease-in;
+}
+
+.key:hover {
+  background: darkgray;
+  color: white;
+}
+
+.value {
+  font-size: 30px;
+  float: right;
+  margin: 30px 5px 0 0;
+  width: 100%;
+
+  overflow: wrap;
+  text-align: right;
+}
+
+.littleNumbers {
+  text-align: right;
+  margin: 5px;
+  font-size: 12px;
+  color: #919191;
+}
