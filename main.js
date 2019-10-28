@@ -32,6 +32,13 @@ const operate = (operator, n1, n2) => {
   }
 };
 
+function divMultMatch(input) {
+  if (input === "*" || input === "/" || input === "%") {
+    return true;
+  }
+  return false;
+}
+
 function calculate(str) {
   let histArr = str.split(" ");
 
@@ -42,8 +49,8 @@ function calculate(str) {
   }
   let i = histArr.length;
   while (i > 1) {
-    if (histArr.findIndex(item => item.match(/[\*%/]/)) != -1) {
-      foundOper = histArr.findIndex(oper => oper.match(/[\*%/]/));
+    if (histArr.findIndex(item => item.toString().match(/^[\*%/]$/)) != -1) {
+      foundOper = histArr.findIndex(oper => oper.toString().match(/^[\*%/]$/));
       if (histArr[foundOper] === "/" && histArr[foundOper + 1] == 0) {
         alert("You can't divide by zero!");
         return;
@@ -53,16 +60,17 @@ function calculate(str) {
         parseFloat(histArr[foundOper - 1]),
         parseFloat(histArr[foundOper + 1])
       );
-      console.log(holdRes);
+
       histArr.splice(foundOper - 1, 3, holdRes);
-    } else if (histArr.findIndex(item => item.match(/[\-\+]/)) != -1) {
-      foundOper = histArr.findIndex(oper => oper.match(/[\-\+]/));
+    } else if (
+      histArr.findIndex(item => item.toString().match(/[\-\+]/)) != -1
+    ) {
+      foundOper = histArr.findIndex(oper => oper.toString().match(/^[\-\+]$/));
       holdRes = operate(
         histArr[foundOper],
         parseFloat(histArr[foundOper - 1]),
         parseFloat(histArr[foundOper + 1])
       );
-      console.log(holdRes);
       histArr.splice(foundOper - 1, 3, holdRes);
     }
     i = histArr.length;
